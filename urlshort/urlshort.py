@@ -1,5 +1,6 @@
 from flask import render_template, request, redirect,url_for,flash, abort, session, jsonify,Blueprint
 import os.path
+import os
 import json
 from werkzeug.utils import secure_filename
 
@@ -28,7 +29,7 @@ def your_url():
         else:
             f=request.files['file']
             full_name=request.form['code']+secure_filename(f.filename)
-            f.save(os.path+'/static/user_files'+full_name)
+            f.save(os.getcwd()+'/urlshort/static/user_files/'+full_name)
             urls[request.form['code']]={'file':full_name}
         with open('urls.json','w') as url_file:
             session[request.form['code']]=True
@@ -46,7 +47,7 @@ def redirect_to_url(code):
                 if 'url' in url[code].keys():
                     return redirect(url[code]['url'])
                 else:
-                    return redirect(url_for(os.path+'/static',filename="user_files/"+url[code]['file']))
+                    return redirect(url_for('static',filename="user_files/"+url[code]['file']))
     return abort(404)
 
 
