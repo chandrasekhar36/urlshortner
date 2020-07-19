@@ -10,9 +10,14 @@ bp=Blueprint('urlshort',__name__)
 def home():
     return render_template("home.html",codes=session.keys())
 
+
+@bp.route('/api_1')
+def session_api():
+    return jsonify(list(session.keys()))
+
 @bp.route('/about')
 def about():
-    return "You can use me to shorten URL"
+    return render_template("about.html",title="ABOUT")
 
 @bp.route('/your_url', methods=["GET","POST"])
 def your_url():
@@ -55,7 +60,3 @@ def redirect_to_url(code):
 @bp.errorhandler(404)
 def url_not_found(error):
     return render_template('page_not_found.html'),404
-
-@bp.route('/api')
-def session_api():
-    return jsonify(list(session.keys()))

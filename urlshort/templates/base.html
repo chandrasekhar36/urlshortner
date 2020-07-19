@@ -1,6 +1,16 @@
 <!doctype html>
 <html lang="en">
+<style>
+.footer{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
 
+}
+
+</style>
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
@@ -14,10 +24,13 @@
 
 <body>
 
-  <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-    <h5 class="my-0 mr-md-auto font-weight-normal">URL Shortener</h5>
+  <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-dark border-bottom shadow-sm">
+    <h5 class="my-0 mr-md-auto font-weight-normal text-light">URL Shortener</h5>
     <nav class="my-2 my-md-0 mr-md-3">
-      <a class="p-2 text-dark" href="{{ url_for('urlshort.session_api') }}">API</a>
+      <a class="p-2 text-light" href="/api_1">API</a>
+    </nav>
+    <nav class="my-2 my-md-0 mr-md-3">
+      <a class="p-2 text-light " href="{{ url_for('urlshort.about') }}">ABOUT</a>
     </nav>
     <a class="btn btn-outline-primary" href="{{ url_for('urlshort.home') }}">New URL</a>
   </div>
@@ -33,13 +46,10 @@
 
   {% block main %}{% endblock %}
 
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 
-
-  <div class="container text-center model-footer card-footer">
+  <div class="card-footer bg-dark border-bottom footer">
       <footer>
-          <p>Copyright &copy;2019-2020. Chandraa sekhar satyavarapu. All rights reserved.</p>
+          <p class="text-light">Copyright &copy;2019-2020. Chandraa sekhar satyavarapu. All rights reserved.</p>
       </footer>
   </div>
 
